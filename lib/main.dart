@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tempo_dingo_web/src/config/theme.dart';
+import 'package:tempo_dingo_web/src/tabs/about.dart';
+import 'package:tempo_dingo_web/src/tabs/download.dart';
+import 'package:tempo_dingo_web/src/tabs/home.dart';
+import 'package:tempo_dingo_web/src/tabs/stats.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,7 +19,26 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class _HomePage extends StatelessWidget {
+class _HomePage extends StatefulWidget {
+  @override
+  __HomePageState createState() => __HomePageState();
+}
+
+class __HomePageState extends State<_HomePage> {
+  List<Widget> _tabs = [
+    Home(),
+    Download(),
+    Stats(),
+    About(),
+  ];
+  int _tabIndex = 0;
+
+  void _changeTab(int index) {
+    setState(() {
+      _tabIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,17 +46,35 @@ class _HomePage extends StatelessWidget {
       appBar: AppBar(
         elevation: 2,
         backgroundColor: mainTheme,
-        title: Text(
-          "Tempo Dingo",
-          style: TextStyle(color: Colors.white),
+        title: GestureDetector(
+          onTap: () => _changeTab(0),
+          child: Text(
+            "Tempo Dingo",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 22,
+            ),
+          ),
         ),
         actions: <Widget>[
           Row(
             children: <Widget>[
-              _HomeTab("Home"),
-              _HomeTab("Download"),
-              _HomeTab("Stats"),
-              _HomeTab("About"),
+              GestureDetector(
+                onTap: () => _changeTab(0),
+                child: _HomeTab("Home", _tabIndex == 0),
+              ),
+              GestureDetector(
+                onTap: () => _changeTab(1),
+                child: _HomeTab("Download", _tabIndex == 1),
+              ),
+              GestureDetector(
+                onTap: () => _changeTab(2),
+                child: _HomeTab("Stats", _tabIndex == 2),
+              ),
+              GestureDetector(
+                onTap: () => _changeTab(3),
+                child: _HomeTab("About", _tabIndex == 3),
+              ),
               const SizedBox(
                 width: 100,
               ),
@@ -41,14 +82,16 @@ class _HomePage extends StatelessWidget {
           ),
         ],
       ),
+      body: _tabs[_tabIndex],
     );
   }
 }
 
 class _HomeTab extends StatelessWidget {
   final String title;
+  final bool isSelected;
 
-  const _HomeTab(this.title);
+  const _HomeTab(this.title, this.isSelected);
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +102,8 @@ class _HomeTab extends StatelessWidget {
         style: TextStyle(
           color: Colors.white,
           fontSize: 20,
+          decoration:
+              isSelected ? TextDecoration.underline : TextDecoration.none,
         ),
       ),
     );
