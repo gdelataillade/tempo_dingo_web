@@ -15,24 +15,20 @@ class _StatsState extends State<Stats> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<int>(
-      future: _getGamesNb(),
+    return StreamBuilder(
+      stream: Firestore.instance.collection('stats').snapshots(),
       builder: (context, snapshot) {
-        switch (snapshot.connectionState) {
-          case ConnectionState.waiting:
-            return Text("...");
-          default:
-            if (snapshot.hasError) return Text("error");
-            return Center(
-              child: Text(
-                "Games played: ${snapshot.data}",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 40,
-                ),
-              ),
-            );
-        }
+        if (!snapshot.hasData) return Text("No data");
+        print(snapshot.data.documents.first["nbGames"]);
+        return Center(
+          child: Text(
+            "Games played: ${snapshot.data.documents.first["nbGames"]}",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 40,
+            ),
+          ),
+        );
       },
     );
   }
