@@ -15,21 +15,25 @@ class _StatsState extends State<Stats> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        FutureBuilder<int>(
-          future: _getGamesNb(),
-          builder: (context, snapshot) {
-            switch (snapshot.connectionState) {
-              case ConnectionState.waiting:
-                return Text("...");
-              default:
-                if (snapshot.hasError) return Text("error");
-                return Text("Games played: ${snapshot.data}");
-            }
-          },
-        ),
-      ],
+    return FutureBuilder<int>(
+      future: _getGamesNb(),
+      builder: (context, snapshot) {
+        switch (snapshot.connectionState) {
+          case ConnectionState.waiting:
+            return Text("...");
+          default:
+            if (snapshot.hasError) return Text("error");
+            return Center(
+              child: Text(
+                "Games played: ${snapshot.data}",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 40,
+                ),
+              ),
+            );
+        }
+      },
     );
   }
 }
