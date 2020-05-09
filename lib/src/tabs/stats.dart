@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class Stats extends StatefulWidget {
@@ -6,10 +7,29 @@ class Stats extends StatefulWidget {
 }
 
 class _StatsState extends State<Stats> {
+  Future<int> _getGamesNb() async {
+    final QuerySnapshot snapshot =
+        await Firestore.instance.collection("stats").getDocuments();
+    return snapshot.documents.first["nbGames"];
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.pink,
+    return Column(
+      children: <Widget>[
+        FutureBuilder<int>(
+          future: _getGamesNb(),
+          builder: (context, snapshot) {
+            switch (snapshot.connectionState) {
+              case ConnectionState.waiting:
+                return Text("...");
+              default:
+                if (snapshot.hasError) return Text("error");
+                return Text("Games played: ${snapshot.data}");
+            }
+          },
+        ),
+      ],
     );
   }
 }
