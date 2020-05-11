@@ -28,6 +28,11 @@ flutter:
 
     - assets/app-store-badge.png
     - assets/google-play-badge.png
+
+    - assets/united-states.png
+    - assets/france.png
+    - assets/spain.png
+
   fonts:
     - family: Apple
       fonts:

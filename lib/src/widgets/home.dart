@@ -15,7 +15,7 @@ class _HomeState extends State<Home> {
         child: Scrollbar(
           child: Column(
             children: <Widget>[
-              const SizedBox(height: 50),
+              _Languages(),
               Text(
                 "Tempo Dingo",
                 style: title,
@@ -39,6 +39,51 @@ class _HomeState extends State<Home> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _Languages extends StatefulWidget {
+  @override
+  __LanguagesState createState() => __LanguagesState();
+}
+
+class __LanguagesState extends State<_Languages> {
+  String _language = 'en';
+
+  Widget _buildFlag(String path, String language) {
+    return GestureDetector(
+      onTap: () {
+        if (_language != language) setState(() => _language = language);
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(40),
+          border: Border.all(
+            color: _language == language ? Colors.white : Colors.transparent,
+            width: 1,
+          ),
+        ),
+        child: Image.asset(path, height: 25),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          _buildFlag('assets/united-states.png', 'en'),
+          const SizedBox(width: 5),
+          _buildFlag('assets/france.png', 'fr'),
+          const SizedBox(width: 5),
+          _buildFlag('assets/spain.png', 'es'),
+          const SizedBox(width: 5),
+        ],
       ),
     );
   }

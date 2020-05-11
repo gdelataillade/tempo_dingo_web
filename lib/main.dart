@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tempo_dingo_web/src/config/theme.dart';
-import 'package:tempo_dingo_web/src/tabs/home.dart';
+import 'package:tempo_dingo_web/src/widgets/home.dart';
 
 void main() => runApp(MyApp());
 
