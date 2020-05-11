@@ -25,3 +25,16 @@ flutter:
     - assets/td_home.png
     - assets/td_search.png
     - assets/td_settings.png
+
+    - assets/app-store-badge.png
+    - assets/google-play-badge.png
+  fonts:
+    - family: Apple
+      fonts:
+        - asset: assets/SF-Pro-Display-Regular.ttf
+    - family: Apple-Semibold
+      fonts:
+        - asset: assets/SF-Pro-Display-Semibold.ttf
+    - family: Apple-Bold
+      fonts:
+        - asset: assets/SF-Pro-Display-Bold.ttf
