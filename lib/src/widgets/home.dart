@@ -23,13 +23,13 @@ class _HomeState extends State<Home> {
               ),
               const SizedBox(height: 10),
               Text(
-                "Test your sense of rhythm with your favorite songs",
+                "Test your rhythm skills on your favorite songs.",
                 style: headline,
               ),
-              Text(
-                "in Spotify library.",
-                style: headline,
-              ),
+              // Text(
+              //   "in Spotify library.",
+              //   style: headline,
+              // ),
               const SizedBox(height: 40),
               _Screenshots(),
               const SizedBox(height: 60),

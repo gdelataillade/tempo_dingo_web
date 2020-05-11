@@ -9,12 +9,49 @@ class Demo extends StatefulWidget {
 class _DemoState extends State<Demo> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text("How to play?", style: title),
-        Text("Tap the screen at the same time that the music tempo"),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text("How to play?", style: title),
+            const SizedBox(height: 10),
+            Text("Tap the screen at the same time that the music tempo",
+                style: headline),
+          ],
+        ),
+        Column(
+          children: <Widget>[
+            Text("Try it out!", style: title),
+            const SizedBox(height: 30),
+            Stack(
+              children: <Widget>[
+                Image.asset('assets/td_game.png', height: 600),
+                Positioned(
+                  top: 357,
+                  left: 27,
+                  child: MaterialButton(
+                    onPressed: () {},
+                    height: 212,
+                    minWidth: 249,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    child: Text(
+                      "Tap here",
+                      style: TextStyle(
+                        fontFamily: 'Apple',
+                        fontSize: 16,
+                        color: Color.fromRGBO(77, 83, 105, 1),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        )
       ],
     );
   }
