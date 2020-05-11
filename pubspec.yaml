@@ -25,6 +25,7 @@ flutter:
     - assets/td_home.png
     - assets/td_search.png
     - assets/td_settings.png
+    - assets/td_game.png
 
     - assets/app-store-badge.png
     - assets/google-play-badge.png
