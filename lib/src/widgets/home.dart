@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tempo_dingo_web/src/config/theme.dart';
+import 'package:tempo_dingo_web/src/widgets/demo.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -31,6 +32,8 @@ class _HomeState extends State<Home> {
               ),
               const SizedBox(height: 40),
               _Screenshots(),
+              const SizedBox(height: 60),
+              Demo(),
               const SizedBox(height: 60),
               _StoreBadges(),
               const SizedBox(height: 60),

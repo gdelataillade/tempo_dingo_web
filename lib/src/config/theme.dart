@@ -4,7 +4,7 @@ final Color mainTheme = Color.fromRGBO(38, 45, 64, 1);
 
 final TextStyle title = TextStyle(
   color: Colors.white,
-  fontSize: 45,
+  fontSize: 50,
   fontFamily: 'Apple-Semibold',
 );
 
