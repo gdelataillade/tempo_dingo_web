@@ -18,7 +18,7 @@ class _DemoState extends State<Demo> {
           children: <Widget>[
             Text("How to play?", style: title),
             const SizedBox(height: 10),
-            Text("Tap the screen at the same time that the music tempo",
+            Text("Tap the screen at the same time as the music tempo",
                 style: headline),
           ],
         ),
