@@ -11,33 +11,53 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: mainTheme,
-      body: SingleChildScrollView(
-        child: Scrollbar(
-          child: Column(
-            children: <Widget>[
-              _Languages(),
-              const SizedBox(height: 30),
-              Text(
-                "Tempo Dingo",
-                style: title,
+      body: MediaQuery.of(context).size.width < 500
+          ? _DeviceView()
+          : SingleChildScrollView(
+              child: Scrollbar(
+                child: Column(
+                  children: <Widget>[
+                    _Languages(),
+                    const SizedBox(height: 30),
+                    Text(
+                      "Tempo Dingo",
+                      style: title,
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      "Test your rhythm skills with your favorite Spotify songs.",
+                      style: headline,
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 30),
+                    const SizedBox(height: 40),
+                    _Screenshots(),
+                    const SizedBox(height: 60),
+                    _StoreBadges(),
+                    const SizedBox(height: 60),
+                    _Footer(),
+                    const SizedBox(height: 10),
+                  ],
+                ),
               ),
-              const SizedBox(height: 10),
-              Text(
-                "Test your rhythm skills with your favorite Spotify songs.",
-                style: headline,
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 30),
-              const SizedBox(height: 40),
-              _Screenshots(),
-              const SizedBox(height: 60),
-              _StoreBadges(),
-              const SizedBox(height: 60),
-              _Footer(),
-              const SizedBox(height: 10),
-            ],
+            ),
+    );
+  }
+}
+
+class _DeviceView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Flexible(
+      child: Column(
+        children: <Widget>[
+          Text(
+            "Tempo Dingo",
+            style: title,
           ),
-        ),
+          const SizedBox(height: 30),
+          _StoreBadges(),
+        ],
       ),
     );
   }
@@ -122,16 +142,13 @@ class _Screenshots extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FittedBox(
-      child: Row(
-        children: <Widget>[
-          MediaQuery.of(context).size.width > 823 ? _search : Container(),
-          const SizedBox(width: 20),
-          _home,
-          const SizedBox(width: 20),
-          MediaQuery.of(context).size.width > 1310 ? _settings : Container(),
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        MediaQuery.of(context).size.width > 823 ? _search : Container(),
+        _home,
+        MediaQuery.of(context).size.width > 1310 ? _settings : Container(),
+      ],
     );
   }
 }
