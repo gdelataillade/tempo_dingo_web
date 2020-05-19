@@ -33,6 +33,7 @@ class _HomeState extends State<Home> {
                     const SizedBox(height: 40),
                     _Screenshots(),
                     const SizedBox(height: 60),
+                    Text("Coming soon...", style: footer),
                     _StoreBadges(),
                     const SizedBox(height: 60),
                     _Footer(),
