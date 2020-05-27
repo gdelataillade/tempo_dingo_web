@@ -1,3 +1,5 @@
+import 'dart:js' as js;
+import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:tempo_dingo_web/src/config/theme.dart';
 
@@ -33,9 +35,11 @@ class _HomeState extends State<Home> {
                     const SizedBox(height: 40),
                     _Screenshots(),
                     const SizedBox(height: 60),
-                    Text("Coming soon...", style: footer),
+                    Text("Coming soon...", style: comingSoon),
                     _StoreBadges(),
                     const SizedBox(height: 60),
+                    _Github(),
+                    const SizedBox(height: 40),
                     _Footer(),
                     const SizedBox(height: 10),
                   ],
@@ -180,6 +184,28 @@ class _StoreBadges extends StatelessWidget {
   }
 }
 
+class _Github extends StatefulWidget {
+  @override
+  __GithubState createState() => __GithubState();
+}
+
+class __GithubState extends State<_Github> {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => js.context
+          .callMethod("open", ["https://github.com/gdelataillade/tempo_dingo"]),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text("Open source project available on  ", style: comingSoon),
+          Icon(FeatherIcons.github, color: Colors.white),
+        ],
+      ),
+    );
+  }
+}
+
 class _Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -189,10 +215,13 @@ class _Footer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text("Made with ", style: footer),
-            Icon(Icons.favorite_border, color: Colors.red),
-            Text(" by Gautier de Lataillade", style: footer),
+            Icon(Icons.favorite_border, color: Colors.red, size: 14),
+            Text(" by Gautier de Lataillade.", style: footer),
           ],
         ),
+        Text(
+            "Website made with Flutter Web. Mobile application made with Flutter. Back-end made with Firestore. Use of Spotify API. SIREN: 850 572 793 00014. Contact: gautier2406@gmail.com",
+            style: footer),
       ],
     );
   }

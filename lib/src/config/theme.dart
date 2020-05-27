@@ -20,8 +20,14 @@ final TextStyle headline = TextStyle(
   fontFamily: 'Apple',
 );
 
+final TextStyle comingSoon = TextStyle(
+  color: Colors.white,
+  fontSize: 18,
+  fontFamily: 'Apple',
+);
+
 final TextStyle footer = TextStyle(
   color: Colors.white,
-  fontSize: 20,
-  fontFamily: 'Apple',
+  fontSize: 11,
+  // fontFamily: 'Apple',
 );
